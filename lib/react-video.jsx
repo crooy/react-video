@@ -9,7 +9,8 @@ module.exports = React.createClass({
   propTypes: {
     from: React.PropTypes.oneOf(['youtube', 'vimeo']),
     videoId: React.PropTypes.string.isRequired,
-    onError: React.PropTypes.func
+    onError: React.PropTypes.func,
+    allowfullscreen: React.ProptTypes.bool
   },
   getDefaultProps() {
     return {
@@ -82,7 +83,7 @@ module.exports = React.createClass({
     if (this.state.showingVideo) {
       return (
         <div className='video-embed' style={embedVideoStyle}>
-          <iframe frameBorder='0' src={this.getIframeUrl()}></iframe>
+          <iframe frameBorder='0' allowfullscreen={this.props.allowfullscreen || true}  src={this.getIframeUrl()}></iframe>
         </div>
       );
     }
